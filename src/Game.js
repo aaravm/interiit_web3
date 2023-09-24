@@ -3,7 +3,7 @@ import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
 import CustomDialog from "./components/CustomDialog";
 import Web3 from 'web3';
-
+import InputForm from "./input.js";
 
 function Game({ players, room, orientation, cleanup }) {
   const chess = useMemo(() => new Chess(), []); // <- 1
@@ -305,6 +305,7 @@ function Game({ players, room, orientation, cleanup }) {
   // Game component returned jsx
   return (
     <>
+		<InputForm winner={chess.turn() === "w" ? "black" : "white"}></InputForm>
       <div className="board">
         <Chessboard position={fen} onPieceDrop={onDrop} />  {/**  <- 4 */}
       </div>
